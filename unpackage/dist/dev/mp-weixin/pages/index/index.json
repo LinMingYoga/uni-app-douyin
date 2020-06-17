@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "tab": "/comm/tab",
+    "video-list": "/comm/videoList",
+    "first-nav": "/comm/firstNav"
+  }
+}

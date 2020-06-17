@@ -1,0 +1,11 @@
+
+.content {
+	width: 100%;
+	height: 100vh;
+}
+.tab-comm {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
