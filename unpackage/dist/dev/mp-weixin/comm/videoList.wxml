@@ -1,1 +1,0 @@
-<view class="lm-video-list"><view class="swiper-box"><swiper class="swiper" vertical="{{true}}"><swiper-item><view class="swiper-item"><video-player vue-id="499af702-1" bind:__l="__l"></video-player></view></swiper-item><swiper-item><view class="swiper-item">我是第二页</view></swiper-item></swiper></view></view>

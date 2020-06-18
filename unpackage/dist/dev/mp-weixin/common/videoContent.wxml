@@ -1,0 +1,1 @@
+<view class="lm-video-content"><view class="lm-content-userName">{{'@'+videoContent.author+''}}</view><view class="lm-content-content">{{''+videoContent.title+''}}</view></view>

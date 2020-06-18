@@ -1,15 +1,17 @@
 <template>
 	<view class="content">
 		<first-nav></first-nav>
-		<video-list></video-list>
+		<video-list :list="list"></video-list>
 		<tab class="tab-comm"></tab>
 	</view>
 </template>
 
 <script>
-	import tab from '../../comm/tab.vue'
-	import firstNav from '../../comm/firstNav.vue'
-	import videoList from '../../comm/videoList.vue'
+	import tab from '@/common/tab.vue'
+	import firstNav from '@/common/firstNav.vue'
+	import videoList from '@/common/videoList.vue'
+	// api
+	import { getVideoList } from '@/api/index.js'
 	export default {
 		components:{
 			tab,
@@ -18,11 +20,15 @@
 		},
 		data() {
 			return {
-				title: 'Hello'
+				title: 'Hello',
+				list: []
 			}
 		},
 		onLoad() {
-
+			getVideoList().then(res => {
+				console.log(res)
+				this.list = res.list
+			})
 		},
 		methods: {
 

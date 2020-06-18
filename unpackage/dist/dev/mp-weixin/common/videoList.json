@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "video-player": "/common/videoPlayer",
+    "video-content": "/common/videoContent",
+    "video-right": "/common/videoRight"
+  }
+}

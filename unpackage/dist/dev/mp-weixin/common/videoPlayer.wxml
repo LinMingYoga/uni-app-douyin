@@ -1,0 +1,1 @@
+<view class="lm-video"><video src="{{$root.f0}}" controls="{{true}}" loop="{{true}}"></video></view>

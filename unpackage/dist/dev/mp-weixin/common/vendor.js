@@ -757,7 +757,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1694,9 +1694,9 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 11:
-/*!*************************************************************************!*\
-  !*** D:/林鸣/uni-app-project/code/uni-app-kfc/static/styles/iconfont.css ***!
-  \*************************************************************************/
+/*!***************************************************************!*\
+  !*** D:/uniAppDemo/uni-app-douyin/static/styles/iconfont.css ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7238,7 +7238,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7259,14 +7259,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7342,7 +7342,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7768,9 +7768,9 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!*********************************************************!*\
-  !*** D:/林鸣/uni-app-project/code/uni-app-kfc/pages.json ***!
-  \*********************************************************/
+/*!***********************************************!*\
+  !*** D:/uniAppDemo/uni-app-douyin/pages.json ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -7779,13 +7779,78 @@ module.exports = g;
 /***/ }),
 
 /***/ 61:
-/*!*************************************************************!*\
-  !*** D:/林鸣/uni-app-project/code/uni-app-kfc/static/2-6.mp4 ***!
-  \*************************************************************/
+/*!*************************************************!*\
+  !*** D:/uniAppDemo/uni-app-douyin/api/index.js ***!
+  \*************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "/static/2-6.mp4";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = exports.getVideoList = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 62));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var baseUrl = '/api/';
+// POST请求方式
+var getVideoList = function getVideoList() {return _request.default.globalRequest("".concat(baseUrl, "videos.json"), 'GET');};exports.getVideoList = getVideoList;var _default =
+
+{
+  getVideoList: getVideoList };exports.default = _default;
+
+/***/ }),
+
+/***/ 62:
+/*!***************************************************!*\
+  !*** D:/uniAppDemo/uni-app-douyin/api/request.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 63));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var request = {};
+var headers = {};
+var PORT1 = '/baseinfo';
+
+request.globalRequest = function (url, method, data, power) {
+  return new Promise(function (resolve, reject) {
+    uni.request({
+      url: _config.default + url,
+      method: method,
+      data: data,
+      dataType: 'json',
+      header: 'application/json' }).
+    then(function (res) {
+      resolve(res[1].data);
+    }).catch(function (err) {
+      reject(err);
+    });
+  });
+};var _default =
+request;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 63:
+/*!**************************************************!*\
+  !*** D:/uniAppDemo/uni-app-douyin/api/config.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var url_config = "";
+
+// if(process.env.NODE_ENV === 'development'){
+//     // 开发环境
+//     url_config = 'https://*****.com/'
+// }else{
+//     // 生产环境
+//     url_config = 'http://127.0.0.1:8989'
+// }
+url_config = 'http://127.0.0.1:8989';var _default =
+
+url_config;exports.default = _default;
 
 /***/ })
 

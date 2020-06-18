@@ -2,13 +2,12 @@
 	<view class="lm-video-list">
 		<view class="swiper-box">
 			<swiper class="swiper" :vertical="true">
-				<swiper-item>
+				<swiper-item v-for="item in list" :key="item.id">
 					<view class="swiper-item">
-						<video-player></video-player>
+						<video-content :videoContent="item"></video-content>
+						<video-right></video-right>
+						<video-player :videoItem="item"></video-player>
 					</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">我是第二页</view>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -17,10 +16,24 @@
 
 <script>
 	import videoPlayer from './videoPlayer.vue'
+	import videoContent from './videoContent.vue'
+	import videoRight from './videoRight.vue'
 	export default {
+		props:{
+			list: {
+				type: Array,
+				default: []
+			}
+		},
 		components: {
-			videoPlayer
-		}
+			videoPlayer,
+			videoContent,
+			videoRight
+		},
+		data() {
+			return {
+			}
+		},
 	}
 </script>
 

@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"comm/firstNav":1,"comm/tab":1,"comm/videoList":1,"comm/videoPlayer":1};
+/******/ 		var cssChunks = {"common/firstNav":1,"common/tab":1,"common/videoList":1,"common/videoContent":1,"common/videoPlayer":1,"common/videoRight":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"comm/firstNav":"comm/firstNav","comm/tab":"comm/tab","comm/videoList":"comm/videoList","comm/videoPlayer":"comm/videoPlayer"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"common/firstNav":"common/firstNav","common/tab":"common/tab","common/videoList":"common/videoList","common/videoContent":"common/videoContent","common/videoPlayer":"common/videoPlayer","common/videoRight":"common/videoRight"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
