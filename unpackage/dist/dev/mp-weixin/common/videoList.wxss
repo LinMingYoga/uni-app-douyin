@@ -10,4 +10,10 @@
 	width: 100%;
 	height: 100%;
 }
+.lm-video-right {
+	position: fixed;
+	z-index: 22;
+	bottom: 60px;
+	right: 10px;
+}
 

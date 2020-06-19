@@ -41,4 +41,36 @@
   word-wrap: break-word;
   margin: 10px 0;
 }
+.lm-video-content .overflowMusic {
+  width: 150px;
+  overflow: hidden;
+}
+.lm-video-content .lm-content-other {
+  height: 35px;
+  font-size: 12px;
+  width: 305px;
+  line-height: 35px;
+  -webkit-animation: music 6s linear .2s infinite;
+          animation: music 6s linear .2s infinite;
+}
+@-webkit-keyframes music {
+0% {
+    -webkit-transform: translate3d(80%, 0, 0);
+            transform: translate3d(80%, 0, 0);
+}
+100% {
+    -webkit-transform: translate3d(-80%, 0, 0);
+            transform: translate3d(-80%, 0, 0);
+}
+}
+@keyframes music {
+0% {
+    -webkit-transform: translate3d(80%, 0, 0);
+            transform: translate3d(80%, 0, 0);
+}
+100% {
+    -webkit-transform: translate3d(-80%, 0, 0);
+            transform: translate3d(-80%, 0, 0);
+}
+}
 

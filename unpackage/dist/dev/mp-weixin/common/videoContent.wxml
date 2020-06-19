@@ -1,1 +1,1 @@
-<view class="lm-video-content"><view class="lm-content-userName">{{'@'+videoContent.author+''}}</view><view class="lm-content-content">{{''+videoContent.title+''}}</view></view>
+<view class="lm-video-content"><view class="lm-content-userName">{{'@'+videoContent.author+''}}</view><view class="lm-content-content">{{''+videoContent.title+''}}</view><view class="overflowMusic"><view class="lm-content-other">麻烦给我的爱人来一杯Mojito,我喜欢阅读她微醺时的眼眸</view></view></view>

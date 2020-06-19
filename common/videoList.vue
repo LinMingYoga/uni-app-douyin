@@ -5,7 +5,7 @@
 				<swiper-item v-for="item in list" :key="item.id">
 					<view class="swiper-item">
 						<video-content :videoContent="item"></video-content>
-						<video-right></video-right>
+						<video-right :listItem="item" class="lm-video-right"></video-right>
 						<video-player :videoItem="item"></video-player>
 					</view>
 				</swiper-item>
@@ -48,5 +48,11 @@
 	.swiper-item {
 		width: 100%;
 		height: 100%;
+	}
+	.lm-video-right {
+		position: fixed;
+		z-index: 22;
+		bottom: 60px;
+		right: 10px;
 	}
 </style>

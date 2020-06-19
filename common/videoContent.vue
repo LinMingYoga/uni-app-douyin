@@ -6,9 +6,11 @@
 		<view class="lm-content-content">
 			{{videoContent.title}}
 		</view>
-		<!-- <view class="lm-content-other">
-			other
-		</view> -->
+		<view class="overflowMusic">
+			<view class="lm-content-other">
+				麻烦给我的爱人来一杯Mojito,我喜欢阅读她微醺时的眼眸
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -39,6 +41,25 @@
 			font-size: 14px;
 			word-wrap: break-word;
 			margin: 10px 0;
+		}
+		.overflowMusic {
+			width: 150px;
+			overflow: hidden;
+		}
+		.lm-content-other {
+			height: 35px;
+			font-size: 12px;
+			width: 305px;
+			line-height: 35px;
+			animation: music 6s linear .2s infinite;
+		}
+	}
+	@keyframes music {
+		0% {
+			transform: translate3d(80%, 0, 0);
+		}
+		100% {
+			transform: translate3d(-80%, 0 , 0);
 		}
 	}
 </style>
