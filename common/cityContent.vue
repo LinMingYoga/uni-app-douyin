@@ -18,6 +18,14 @@
 						<image src="../static/img/logo.png" mode=""></image>
 					</view>
 				</view>
+				<view class="lm-city-video">
+					<view class="lm-video-player">
+						<video style="width: 100%; height: 100%;" src="http://127.0.0.1:8989/static/1-1.mp4" objectFit="fill" controls></video>
+					</view>
+					<view class="lm-video-auther">
+						<image src="../static/img/logo.png" mode=""></image>
+					</view>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -35,8 +43,9 @@
 		.lm-city-content {
 			.lm-city-position {
 				width: 100%;
-				height: 40px;
+				height: 30px;
 				padding-top: 60px;
+				line-height: 30px;
 				overflow: hidden;
 				color: #aaaaaa;
 				display: flex;
@@ -47,14 +56,13 @@
 			}
 		}
 		.lm-video-list {
+			display: flex;
+			justify-content: space-between;
 			.lm-city-video {
 				position: relative;
+				width: 49%;
 				.lm-video-player {
 					height: 300px;
-					> video {
-						width: 100%;
-						height: 100%;
-					}
 				}
 				.lm-video-auther {
 					position: absolute;

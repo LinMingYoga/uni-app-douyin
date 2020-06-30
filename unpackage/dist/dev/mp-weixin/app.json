@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/city/city",
+    "pages/city/city",
     "pages/index/index",
     "pages/follow/follow"
   ],
@@ -23,5 +23,6 @@
     ]
   },
   "permission": {},
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }
