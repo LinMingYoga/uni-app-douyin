@@ -124,7 +124,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -134,7 +134,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-var _default =
+//
+//
+//
+
+var timer = null;var _default =
 {
   filters: {
     setSrc: function setSrc(value) {
@@ -144,7 +148,70 @@ var _default =
   props: {
     videoItem: {
       type: Object,
-      default: null } } };exports.default = _default;
+      default: null },
+
+    index: {
+      type: Number,
+      default: null } },
+
+
+  data: function data() {
+    return {
+      isPlay: false,
+      isDBclick: false,
+      autoPlay: false };
+
+  },
+  onReady: function onReady() {
+    this.videoContext = uni.createVideoContext('myVideo', this);
+  },
+  created: function created() {
+    this.currAutoPlay();
+  },
+  methods: {
+    handleClick: function handleClick() {var _this = this;
+      clearTimeout(timer);
+      this.isDBclick = !this.isDBclick;
+      timer = setTimeout(function () {
+        // 单击
+        if (_this.isDBclick) {
+          if (_this.isPlay === false) {
+            _this.currPlayer();
+          } else {
+            _this.pause();
+          }
+        } else {
+          // 双击
+          _this.$emit('dbClick');
+        }
+        _this.isDBclick = false;
+      }, 300);
+    },
+    player: function player() {
+      if (this.isPlay === false) {
+        this.videoContext.seek(0);
+        this.videoContext.play();
+        this.isPlay = true;
+      }
+    },
+    pause: function pause() {
+      if (this.isPlay === true) {
+        this.videoContext.pause();
+        this.isPlay = false;
+      }
+    },
+    currPlayer: function currPlayer() {
+      if (this.isPlay === false) {
+        this.videoContext.play();
+        this.isPlay = true;
+      }
+    },
+    currAutoPlay: function currAutoPlay() {
+      if (this.index === 0) {
+        this.autoPlay = true;
+      }
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

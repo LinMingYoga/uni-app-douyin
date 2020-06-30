@@ -1,12 +1,12 @@
 <template>
 	<view class="lm-video-list">
 		<view class="swiper-box">
-			<swiper class="swiper" :vertical="true">
-				<swiper-item v-for="item in list" :key="item.id">
+			<swiper class="swiper" :vertical="true"  @change="change">
+				<swiper-item v-for="(item,index) in list" :key="item.id" @touchstart="touchStart" @touchend="touchEnd">
 					<view class="swiper-item">
 						<video-content :videoContent="item"></video-content>
-						<video-right :listItem="item" class="lm-video-right"></video-right>
-						<video-player :videoItem="item"></video-player>
+						<video-right ref="right" :listItem="item" class="lm-video-right"></video-right>
+						<video-player :index="index" @dbClick="dbClick" ref="player" :videoItem="item"></video-player>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -18,6 +18,7 @@
 	import videoPlayer from './videoPlayer.vue'
 	import videoContent from './videoContent.vue'
 	import videoRight from './videoRight.vue'
+	var time = null
 	export default {
 		props:{
 			list: {
@@ -32,8 +33,39 @@
 		},
 		data() {
 			return {
+				currentPage: 0,
+				pageStartY: 0,
+				pageEndY: 0
 			}
 		},
+		methods:{
+			change(e) {
+				clearTimeout(time)
+				this.currentPage = e.detail.current
+				time = setTimeout(() => {
+					if(this.pageStartY < this.pageEndY) {
+						this.pageStartY = 0
+						this.pageEndY = 0
+						this.$refs.player[this.currentPage].player()
+						this.$refs.player[this.currentPage + 1].pause()
+					} else {
+						this.pageStartY = 0
+						this.pageEndY = 0
+						this.$refs.player[this.currentPage-1].pause()
+						this.$refs.player[this.currentPage].player()
+					}
+				}, 1)
+			},
+			touchStart(e) {
+				this.pageStartY = e.changedTouches[0].clientY
+			},
+			touchEnd(e) {
+				this.pageEndY = e.changedTouches[0].clientY
+			},
+			dbClick() {
+				this.$refs.right[this.currentPage].dbChangeColor()
+			}
+		}
 	}
 </script>
 

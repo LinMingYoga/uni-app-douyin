@@ -161,6 +161,9 @@ var _default =
     hide: function hide() {
       this.show = false;
     },
+    dbChangeColor: function dbChangeColor() {
+      this.color = 'color:red;';
+    },
     changeColor: function changeColor() {
       this.color = this.color === '' ? "color:red;" : '';
     },

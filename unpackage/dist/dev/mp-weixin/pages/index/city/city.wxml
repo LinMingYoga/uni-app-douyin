@@ -1,0 +1,1 @@
+<view class="city"><first-nav vue-id="14162bfd-1" bind:__l="__l"></first-nav><city-content vue-id="14162bfd-2" bind:__l="__l"></city-content><tab class="tab-comm" vue-id="14162bfd-3" bind:__l="__l"></tab></view>

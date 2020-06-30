@@ -1,1 +1,1 @@
-<view class="lm-video"><video src="{{$root.f0}}" controls="{{true}}" loop="{{true}}"></video></view>
+<view class="lm-video"><video id="myVideo" src="{{$root.f0}}" controls="{{true}}" autoplay="{{autoPlay}}" loop="{{true}}" data-event-opts="{{[['tap',[['handleClick',['$event']]]]]}}" bindtap="__e"></video></view>

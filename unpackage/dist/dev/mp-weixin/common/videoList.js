@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var videoPlayer = function videoPlayer() {__webpack_require__.e(/*! require.ensure | common/videoPlayer */ "common/videoPlayer").then((function () {return resolve(__webpack_require__(/*! ./videoPlayer.vue */ 50));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var videoContent = function videoContent() {__webpack_require__.e(/*! require.ensure | common/videoContent */ "common/videoContent").then((function () {return resolve(__webpack_require__(/*! ./videoContent.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var videoRight = function videoRight() {__webpack_require__.e(/*! require.ensure | common/videoRight */ "common/videoRight").then((function () {return resolve(__webpack_require__(/*! ./videoRight.vue */ 64));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var videoPlayer = function videoPlayer() {__webpack_require__.e(/*! require.ensure | common/videoPlayer */ "common/videoPlayer").then((function () {return resolve(__webpack_require__(/*! ./videoPlayer.vue */ 50));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var videoContent = function videoContent() {__webpack_require__.e(/*! require.ensure | common/videoContent */ "common/videoContent").then((function () {return resolve(__webpack_require__(/*! ./videoContent.vue */ 57));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var videoRight = function videoRight() {__webpack_require__.e(/*! require.ensure | common/videoRight */ "common/videoRight").then((function () {return resolve(__webpack_require__(/*! ./videoRight.vue */ 64));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};
 
 
 
@@ -134,6 +134,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+var time = null;var _default =
 {
   props: {
     list: {
@@ -147,9 +148,39 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     videoRight: videoRight },
 
   data: function data() {
-    return {};
+    return {
+      currentPage: 0,
+      pageStartY: 0,
+      pageEndY: 0 };
 
-  } };exports.default = _default;
+  },
+  methods: {
+    change: function change(e) {var _this = this;
+      clearTimeout(time);
+      this.currentPage = e.detail.current;
+      time = setTimeout(function () {
+        if (_this.pageStartY < _this.pageEndY) {
+          _this.pageStartY = 0;
+          _this.pageEndY = 0;
+          _this.$refs.player[_this.currentPage].player();
+          _this.$refs.player[_this.currentPage + 1].pause();
+        } else {
+          _this.pageStartY = 0;
+          _this.pageEndY = 0;
+          _this.$refs.player[_this.currentPage - 1].pause();
+          _this.$refs.player[_this.currentPage].player();
+        }
+      }, 1);
+    },
+    touchStart: function touchStart(e) {
+      this.pageStartY = e.changedTouches[0].clientY;
+    },
+    touchEnd: function touchEnd(e) {
+      this.pageEndY = e.changedTouches[0].clientY;
+    },
+    dbClick: function dbClick() {
+      this.$refs.right[this.currentPage].dbChangeColor();
+    } } };exports.default = _default;
 
 /***/ }),
 

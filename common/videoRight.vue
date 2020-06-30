@@ -45,6 +45,9 @@
 			hide(){
 				this.show=false
 			},
+			dbChangeColor() {
+				this.color = 'color:red;'
+			},
 			changeColor(){
 				this.color=this.color===''?"color:red;":''
 			},
